@@ -1,0 +1,14 @@
+* {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.playerBox {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.playerName {
+  padding: 1rem;
+}

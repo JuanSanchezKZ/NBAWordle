@@ -1,0 +1,15 @@
+<div class="container d-flex justify-content-center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Enter a player</mat-label>
+    <input type="text" #searchInput matInput [matAutocomplete]="auto" />
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      (click)="sendPlayer(option)"
+      *ngFor="let option of searchedPlayer"
+    >
+      {{ option.first_name }} {{ option.last_name }}
+    </mat-option>
+  </mat-autocomplete>
+</div>

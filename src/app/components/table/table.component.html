@@ -1,0 +1,14 @@
+<div *ngFor="let player of guesses.playerGuesses">
+  <div class="container">
+    <div class="wrapper">
+      <div class="fullName">{{ player.first_name }} {{ player.last_name }}</div>
+      <div class="teamName">{{ player.team.full_name }}</div>
+      <div class="conference">{{ player.team.conference }}</div>
+      <div class="division">{{ player.team.division }}</div>
+      <div class="position">{{ player.position }}</div>
+      <div class="height">
+        {{ player.height_feet }}' {{ player.height_inches }}''
+      </div>
+    </div>
+  </div>
+</div>
