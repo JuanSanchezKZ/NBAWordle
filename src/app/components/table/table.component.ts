@@ -9,5 +9,7 @@ import { NbaGuesseService } from 'src/app/services/nba-guesse.service';
 export class TableComponent implements OnInit {
   constructor(public guesses: NbaGuesseService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.guesses.generatePlayer();
+  }
 }

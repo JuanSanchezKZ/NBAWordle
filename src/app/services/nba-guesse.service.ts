@@ -6,6 +6,7 @@ import { NbaApiService } from './nba-api.service';
 })
 export class NbaGuesseService {
   playerGuesses: any[] = [];
+  rightPlayer: any;
 
   constructor(private api: NbaApiService) {}
 
@@ -13,7 +14,7 @@ export class NbaGuesseService {
     let randomNumberPlayer = Math.floor(Math.random() * 250);
     this.api.getPlayer(randomNumberPlayer).subscribe((data) => {
       console.log(data);
-      return data;
+      this.rightPlayer = data;
     });
   }
 }

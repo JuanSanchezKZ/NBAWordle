@@ -4,3 +4,15 @@
   gap: 1rem;
   justify-content: center;
 }
+
+.container-sm {
+  background-color: rgb(189, 189, 189);
+}
+
+.almostRight {
+  background-color: bisque;
+}
+
+.right {
+  background-color: green;
+}

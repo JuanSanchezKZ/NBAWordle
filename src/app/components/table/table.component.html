@@ -1,12 +1,42 @@
+<div class="wrapper">Team Conference Division Position Height</div>
+
 <div *ngFor="let player of guesses.playerGuesses">
-  <div class="container">
+  <div class="container-sm">
     <div class="wrapper">
       <div class="fullName">{{ player.first_name }} {{ player.last_name }}</div>
-      <div class="teamName">{{ player.team.full_name }}</div>
-      <div class="conference">{{ player.team.conference }}</div>
-      <div class="division">{{ player.team.division }}</div>
-      <div class="position">{{ player.position }}</div>
-      <div class="height">
+      <div
+        [class.right]="
+          player.team.full_name == guesses.rightPlayer.team.full_name
+        "
+      >
+        {{ player.team.full_name }}
+      </div>
+      <div
+        [class.right]="
+          player.team.conference == guesses.rightPlayer.team.conference
+        "
+      >
+        {{ player.team.conference }}
+      </div>
+      <div
+        [class.right]="
+          player.team.division == guesses.rightPlayer.team.division
+        "
+      >
+        {{ player.team.division }}
+      </div>
+      <div [class.right]="player.position == guesses.rightPlayer.position">
+        {{ player.position }}
+      </div>
+      <div
+        [class.right]="
+          player.height_inches == guesses.rightPlayer.height_inches
+        "
+        [class.almostRight]="
+          player.height_inches - guesses.rightPlayer.height_inches <=
+            (2 || -2) && player.height_feet == guesses.rightPlayer.height_feet
+        "
+      >
         {{ player.height_feet }}' {{ player.height_inches }}''
       </div>
     </div>
