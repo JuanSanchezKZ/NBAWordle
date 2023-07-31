@@ -7,9 +7,9 @@
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option
       (click)="sendPlayer(option)"
-      *ngFor="let option of searchedPlayer"
+      *ngFor="let option of searchedPlayer; let i = index"
     >
-      {{ option.first_name }} {{ option.last_name }}
+      {{ option.DISPLAY_FIRST_LAST }}
     </mat-option>
   </mat-autocomplete>
 </div>

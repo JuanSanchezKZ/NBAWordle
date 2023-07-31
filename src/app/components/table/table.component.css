@@ -1,18 +1,35 @@
 .wrapper {
+  width: min(900px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+img {
+  width: 100%;
+}
+
+.row {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  width:100%;
+  padding:1rem;
   justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-.container-sm {
-  background-color: rgb(189, 189, 189);
+.row__item {
+  width: calc(100% / 7);
+  text-align: center;
+  font-size: 12px;
 }
 
-.almostRight {
-  background-color: bisque;
-}
 
-.right {
-  background-color: green;
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 7);
+  height: 70px;
+  padding: 0.3rem;
+  font-size: 12px;
+  background-color: #f5f2ec;
 }

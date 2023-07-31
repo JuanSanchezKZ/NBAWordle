@@ -12,12 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TableComponent,
     UserInputComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

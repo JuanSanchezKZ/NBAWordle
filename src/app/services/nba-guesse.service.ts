@@ -1,20 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NbaApiService } from './nba-api.service';
+import { currentPlayers} from 'src/data';
+import { teamData } from 'src/dataTeams';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NbaGuesseService {
   playerGuesses: any[] = [];
-  rightPlayer: any;
 
-  constructor(private api: NbaApiService) {}
+  constructor() {}
 
-  generatePlayer() {
-    let randomNumberPlayer = Math.floor(Math.random() * 250);
-    this.api.getPlayer(randomNumberPlayer).subscribe((data) => {
-      console.log(data);
-      this.rightPlayer = data;
-    });
+  generatePlayer(index: number) {
+    const teamFound = teamData.find((a: any) => a.TeamID === currentPlayers[index].TEAM_ID)
+
+    const playerData = {...currentPlayers[index], ...teamFound}
+
+    return playerData
   }
+
+  generateRandomPlayer() {
+    let randomNumberPlayer = Math.floor(Math.random() * currentPlayers.length);
+    
+   return this.generatePlayer(randomNumberPlayer)
+  }
+
+
 }
