@@ -4,16 +4,17 @@
 }
 
 img {
-  width: 100%;
+  object-fit: contain;
+  width: 70px;
 }
 
 .row {
   display: flex;
   width:100%;
-  padding:1rem;
   justify-content: center;
   align-items: center;
   margin: 0;
+  padding: 0;
 }
 
 .row__item {
@@ -23,13 +24,11 @@ img {
 }
 
 
-.cell {
+.row__cell {
   display: flex;
   justify-content: center;
   align-items: center;
   width: calc(100% / 7);
   height: 70px;
-  padding: 0.3rem;
   font-size: 12px;
-  background-color: #f5f2ec;
 }

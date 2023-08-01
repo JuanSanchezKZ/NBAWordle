@@ -1,4 +1,4 @@
-<div class="container">
+<div class="wrapper">
   <div class="row">
     <div class="row__item">Team</div>
     <div class="row__item">Conf</div>
@@ -11,7 +11,12 @@
   <ng-container *ngFor="let player of guesses.playerGuesses; let i = index">
     <h3>{{ player.DISPLAY_FIRST_LAST }}</h3>
     <div class="row">
-      <div class="cell">
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          randomPlayer.TEAM_ID === player.TEAM_ID ? '#37be75' : '#f5f2ec'
+        "
+      >
         <img
           [src]="
             'https://cdn.nba.com/logos/nba/' +
@@ -21,12 +26,63 @@
           alt=""
         />
       </div>
-      <div class="cell">{{ player.Conference }}</div>
-      <div class="cell">{{ player.Division }}</div>
-      <div class="cell">{{ player.POSITION[0] }}</div>
-      <div class="cell">{{ player.HEIGHT }}</div>
-      <div class="cell">{{ getPlayerAge(i) }}</div>
-      <div class="cell">{{ player.JERSEY }}</div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          randomPlayer.Conference === player.Conference ? '#37be75' : '#f5f2ec'
+        "
+      >
+        {{ player.Conference }}
+      </div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          randomPlayer.Division === player.Division ? '#37be75' : '#f5f2ec'
+        "
+      >
+        {{ player.Division }}
+      </div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          randomPlayer.POSITION[0] === player.POSITION[0]
+            ? '#37be75'
+            : '#f5f2ec'
+        "
+      >
+        {{ player.POSITION[0] }}
+      </div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          player.HEIGHT === randomPlayer.HEIGHT
+            ? '#37be75'
+            : checkHeight(player.HEIGHT)
+        "
+      >
+        {{ player.HEIGHT }}
+      </div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          getPlayerAge(player.BIRTHDATE) ===
+          getPlayerAge(randomPlayer.BIRTHDATE)
+            ? '#37be75'
+            : checkNumber(player, 'BIRTHDATE')
+        "
+      >
+        {{ getPlayerAge(player.BIRTHDATE) }}
+      </div>
+      <div
+        class="row__cell"
+        [style.backgroundColor]="
+          player.JERSEY === randomPlayer.JERSEY
+            ? '#37be75'
+            : checkNumber(player, 'JERSEY')
+        "
+      >
+        {{ player.JERSEY }}
+      </div>
     </div>
   </ng-container>
 </div>

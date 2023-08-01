@@ -1,0 +1,14 @@
+<div mat-dialog-content class="container">
+  <img
+    [style.filter]="data.isSilhouette ? 'contrast(0%) brightness(50%)' : ''"
+    [src]="data.image"
+    [alt]="data.playerName"
+  />
+  <div *ngIf="data.isSilhouette; else elseBlock">Mystery Player</div>
+  <ng-template #elseBlock>
+    <div class="bottom-data">
+      <p>{{ data.playerName }}</p>
+      <p>{{ data.description }}</p>
+    </div>
+  </ng-template>
+</div>
