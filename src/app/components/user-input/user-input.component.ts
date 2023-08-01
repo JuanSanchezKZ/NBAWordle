@@ -47,12 +47,7 @@ export class UserInputComponent implements OnInit {
     if (player.PERSON_ID === this.guesses.randomPlayer.PERSON_ID || this.guesses.guessesRemaining === 0) {
       this.guesses.playerWon = true
       this.openDialog()
-
-
     }
-
-
-
   }
 
   openDialog(): void {

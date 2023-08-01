@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { ModalComponent } from './components/modal/modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ModalHowToPlayComponent } from './components/modal-how-to-play/modal-how-to-play.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     ModalComponent,
     FooterComponent,
+    NavbarComponent,
+    ModalHowToPlayComponent,
   ],
   imports: [
     BrowserModule,
