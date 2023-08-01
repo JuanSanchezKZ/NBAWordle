@@ -1,8 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .container {
-width: min(900px, 100% - 3rem);
-margin-inline: auto;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(243, 242, 242);
+    padding: 1rem;
+}
+
+.container h1 {
+    color: #019284;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.container p {
+    color: #019284;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #026b61;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #038C7F;
 }

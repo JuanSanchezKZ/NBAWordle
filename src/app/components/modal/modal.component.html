@@ -2,7 +2,6 @@
   <img
     [style.filter]="data.isSilhouette ? 'contrast(0%) brightness(50%)' : ''"
     [src]="data.image"
-    [alt]="data.playerName"
   />
   <div *ngIf="data.isSilhouette; else elseBlock">Mystery Player</div>
   <ng-template #elseBlock>

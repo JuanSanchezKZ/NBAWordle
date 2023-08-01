@@ -13,7 +13,6 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: ModalDialog,) { }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
 }
