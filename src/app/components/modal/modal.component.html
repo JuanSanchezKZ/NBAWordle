@@ -3,7 +3,7 @@
     [style.filter]="data.isSilhouette ? 'contrast(0%) brightness(50%)' : ''"
     [src]="data.image"
   />
-  <div *ngIf="data.isSilhouette; else elseBlock">Mystery Player</div>
+  <div class="bottom-data" *ngIf="data.isSilhouette; else elseBlock"><span>Mystery Player</span></div>
   <ng-template #elseBlock>
     <div class="bottom-data">
       <p>{{ data.playerName }}</p>

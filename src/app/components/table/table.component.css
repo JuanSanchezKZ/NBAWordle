@@ -50,6 +50,7 @@ h3 {
   align-items: center;
   width: calc(100% / 7);
   height: 70px;
-  font-size: 12px;
+  font-size: 75%;
+
 
 }

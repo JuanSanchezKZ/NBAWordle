@@ -12,6 +12,32 @@ export class TableComponent implements OnInit {
   constructor(public guesses: NbaGuessesService) { }
 
 
+  getDivision(conference: string) {
+
+    let conferenceShort: string = '';
+    switch (conference) {
+      case "Northwest":
+        conferenceShort = "NW"
+        break;
+      case "Pacific":
+        conferenceShort = "PAC"
+        break;
+      case "Southwest":
+        conferenceShort = "SE"
+        break;
+      case "Atlantic":
+        conferenceShort = "ATL"
+        break;
+      case "Central":
+        conferenceShort = "CEN"
+        break;
+      case "Southeast":
+        conferenceShort = "SE"
+    }
+
+    return conferenceShort
+  }
+
   getPlayerAge(birthdate: string) {
     const playerBirthdate = new Date(birthdate);
     const dateNow = new Date();
@@ -38,6 +64,13 @@ export class TableComponent implements OnInit {
     } else {
       return '#f5f2ec'
     }
+  }
+
+  parseHeight(height: string) {
+    const feetHeightPlayer = Number(height.substring(0, height.indexOf('-')))
+    const inchesHeightPlayer = Number(height.slice(height.indexOf('-') + 1));
+
+    return `${feetHeightPlayer}' ${inchesHeightPlayer}"`
   }
 
   checkHeight(playerHeight: string) {

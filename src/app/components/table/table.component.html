@@ -40,7 +40,7 @@
           randomPlayer.Division === player.Division ? '#37be75' : '#f5f2ec'
         "
       >
-        {{ player.Division }}
+        {{ getDivision(player.Division) }}
       </div>
       <div
         class="row__cell"
@@ -60,7 +60,7 @@
             : checkHeight(player.HEIGHT)
         "
       >
-        {{ player.HEIGHT }}
+        {{ parseHeight(player.HEIGHT) }}
       </div>
       <div
         class="row__cell"
