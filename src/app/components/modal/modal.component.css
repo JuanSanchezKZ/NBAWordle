@@ -11,7 +11,16 @@ img {
 
 .bottom-data {
     margin-top: 1rem;
+    color: #005864;
 }
+
+.bottom-data p:first-of-type {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
 
 .bottom-data span {
     text-transform: uppercase;
