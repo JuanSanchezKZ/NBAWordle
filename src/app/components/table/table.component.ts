@@ -114,6 +114,5 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.randomPlayer = this.guesses.generateRandomPlayer()
     this.randomPlayerAge = Number(this.getPlayerAge(this.randomPlayer.BIRTHDATE))
-    console.log(this.randomPlayer)
   }
 }
