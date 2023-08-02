@@ -44,6 +44,7 @@ h3 {
 
 .row__cell {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: calc(100% / 7);

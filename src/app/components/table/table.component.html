@@ -60,7 +60,9 @@
             : checkHeight(player.HEIGHT)
         "
       >
-        {{ parseHeight(player.HEIGHT) }}
+        {{ parseHeight(player.HEIGHT).feetPlayer }}'
+        {{ parseHeight(player.HEIGHT).inchesPlayer }}"
+        {{ checkHeighDifference(player.HEIGHT) }}
       </div>
       <div
         class="row__cell"
@@ -72,6 +74,7 @@
         "
       >
         {{ getPlayerAge(player.BIRTHDATE) }}
+        {{ checkAgeDifference(getPlayerAge(player.BIRTHDATE)) }}
       </div>
       <div
         class="row__cell"
@@ -81,7 +84,7 @@
             : checkNumber(player, 'JERSEY')
         "
       >
-        {{ player.JERSEY }}
+        {{ player.JERSEY }} {{ checkJerseyDifference(player.JERSEY) }}
       </div>
     </div>
   </ng-container>

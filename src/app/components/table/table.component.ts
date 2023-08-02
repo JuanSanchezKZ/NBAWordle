@@ -8,6 +8,7 @@ import { NbaGuessesService } from 'src/app/services/nba-guesses.service';
 })
 export class TableComponent implements OnInit {
   randomPlayer!: any
+  randomPlayerAge: number = 0
 
   constructor(public guesses: NbaGuessesService) { }
 
@@ -38,6 +39,24 @@ export class TableComponent implements OnInit {
     return conferenceShort
   }
 
+  returnArrow(a: number, b: number) {
+    if (a > b) {
+      return '↓'; 
+    } else if (a < b) {
+      return '↑' 
+    } else {
+      return ''; 
+    }
+  }
+
+  checkHeighDifference(height: string) {
+      const height1InchesTotal = this.parseHeight(height).feetPlayer * 12 + this.parseHeight(height).inchesPlayer;
+      const height2InchesTotal = this.parseHeight(this.randomPlayer.HEIGHT).feetPlayer * 12 + this.parseHeight(this.randomPlayer.HEIGHT).inchesPlayer;
+
+      return this.returnArrow(height1InchesTotal, height2InchesTotal);
+    
+  }
+
   getPlayerAge(birthdate: string) {
     const playerBirthdate = new Date(birthdate);
     const dateNow = new Date();
@@ -51,45 +70,42 @@ export class TableComponent implements OnInit {
     return age
   }
 
-  checkNumber(player: any, property: string) {
-    let difference;
-    if (property = 'BIRTHDATE') {
-      difference = this.getPlayerAge(player[property]) - this.getPlayerAge(this.randomPlayer[property]);
-    } else {
-      difference = player[property] - this.randomPlayer[property];
-    }
+  checkJerseyDifference(jersey: string) {
+    return this.returnArrow(Number(jersey), Number(this.randomPlayer.JERSEY))
+  }
 
-    if (difference >= -2 && difference <= 2) {
-      return '#eadd65'
-    } else {
-      return '#f5f2ec'
-    }
+  checkAgeDifference(age: number) {
+    return this.returnArrow(Number(age), this.randomPlayerAge)
+  }
+
+  checkNumber(player: any, property: string) {
+   let difference;
+   if (property === "BIRTHDATE") {
+    difference = Math.abs(Number(this.getPlayerAge(player[property])) - Number(this.getPlayerAge(this.randomPlayer[property]))) <= 2
+   } else {
+    difference =  Math.abs(Number(player[property]) - Number(this.randomPlayer[property])) <= 2  
+   }
+   
+    return difference ? '#eadd65' : '#f5f2ec'  
   }
 
   parseHeight(height: string) {
     const feetHeightPlayer = Number(height.substring(0, height.indexOf('-')))
     const inchesHeightPlayer = Number(height.slice(height.indexOf('-') + 1));
 
-    return `${feetHeightPlayer}' ${inchesHeightPlayer}"`
+    return {feetPlayer: feetHeightPlayer, inchesPlayer: inchesHeightPlayer}
   }
 
-  checkHeight(playerHeight: string) {
-    const feetHeightPlayer = Number(playerHeight.substring(0, playerHeight.indexOf('-')))
-    const inchesHeightPlayer = Number(playerHeight.slice(playerHeight.indexOf('-') + 1));
-    const feetHeightRandomPlayer = Number(this.randomPlayer.HEIGHT.substring(0, this.randomPlayer.HEIGHT.indexOf('-')))
-    const inchesHeightRandomPlayer = Number(this.randomPlayer.HEIGHT.slice(this.randomPlayer.HEIGHT.indexOf('-') + 1));
+  checkHeight(height: string) {
+    
+    const height1InchesTotal = this.parseHeight(height).feetPlayer * 12 + this.parseHeight(height).inchesPlayer;
+    const height2InchesTotal = this.parseHeight(this.randomPlayer.HEIGHT).feetPlayer * 12 + this.parseHeight(this.randomPlayer.HEIGHT).inchesPlayer;
 
-    let differenceFeet = feetHeightPlayer - feetHeightRandomPlayer
+    let difference = Math.abs(height1InchesTotal - height2InchesTotal) <= 2 
 
-    let differenceInches = inchesHeightPlayer - inchesHeightRandomPlayer
-
-
-    if (differenceFeet === 1 && differenceInches === 10 || differenceInches === -10 || differenceInches === 11 || differenceInches === -11) {
+    if (difference) {
       return '#eadd65'
-    } else if (differenceFeet >= -2 && differenceFeet <= 2 && differenceInches >= -2 && differenceInches <= 2) {
-      return '#eadd65'
-    }
-    else {
+    } else {
       return '#f5f2ec'
     }
   }
@@ -97,6 +113,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.randomPlayer = this.guesses.generateRandomPlayer()
-
+    this.randomPlayerAge = Number(this.getPlayerAge(this.randomPlayer.BIRTHDATE))
+    console.log(this.randomPlayer)
   }
 }
