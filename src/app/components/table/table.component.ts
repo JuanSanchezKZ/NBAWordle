@@ -103,11 +103,7 @@ export class TableComponent implements OnInit {
 
     let difference = Math.abs(height1InchesTotal - height2InchesTotal) <= 2 
 
-    if (difference) {
-      return '#eadd65'
-    } else {
-      return '#f5f2ec'
-    }
+    return difference ? '#eadd65' : '#f5f2ec'
   }
 
 
